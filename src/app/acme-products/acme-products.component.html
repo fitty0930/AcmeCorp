@@ -1,0 +1,29 @@
+<h1> Lista de productos disponibles </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Nombre </th>
+            <th> Precio </th>
+            <th> Stock </th>
+            <th> Imagen descriptiva </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> {{boomerang.nombre}} </td>
+            <td> {{boomerang.precio}} </td>
+            <td> {{boomerang.stock}} </td>
+            <td> <img [src]="boomerang.image" [alt]="boomerang.nombre"  class="img-thumbnail" style="width: 300px; height: 300px"></td>
+        </tr>
+        <tr>
+            <td>Cemento de secado rápido</td>
+            <td> 900 </td>
+            <td> 200 </td>
+        </tr>
+        <tr>
+            <td> Relámpagos ACME (guantes de goma incluidos) </td>
+            <td> 10000</td>
+            <td>3</td>
+        </tr>
+    </tbody>
+</table>
