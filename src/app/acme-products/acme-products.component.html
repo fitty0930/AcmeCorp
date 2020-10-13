@@ -9,21 +9,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td> {{boomerang.nombre}} </td>
-            <td> {{boomerang.precio}} </td>
-            <td> {{boomerang.stock}} </td>
-            <td> <img [src]="boomerang.image" [alt]="boomerang.nombre"  class="img-thumbnail" style="width: 300px; height: 300px"></td>
-        </tr>
-        <tr>
-            <td>Cemento de secado rápido</td>
-            <td> 900 </td>
-            <td> 200 </td>
-        </tr>
-        <tr>
-            <td> Relámpagos ACME (guantes de goma incluidos) </td>
-            <td> 10000</td>
-            <td>3</td>
+        <tr *ngFor="let product of products" [ngClass]="{'clearance': product.clearance}">
+            <!-- ngFor hace un foreach y ngClass agrega la clase clearance si el valor de verdad de product.clearance es true -->
+            <td> {{product.name}} </td>
+            <td> {{product.price | currency }} </td>
+            <!-- le pone el simbolo $ y dos decimales -->
+            <td><span class="badge badge-danger" *ngIf="product.stock==0"> sin stock </span>
+                <span class="badge badge-success" *ngIf="product.stock!=0"> disponible </span></td>
+            <td> <img [src]="product.image" [alt]="product.name" class="img-thumbnail"
+                    style="width: 300px; height: 300px"></td>
         </tr>
     </tbody>
 </table>
