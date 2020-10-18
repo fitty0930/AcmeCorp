@@ -1,11 +1,12 @@
 <h1> Lista de productos disponibles </h1>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th> Nombre </th>
             <th> Precio </th>
             <th> Stock </th>
             <th> Imagen descriptiva </th>
+            <th> Cantidad a comprar </th>
         </tr>
     </thead>
     <tbody>
@@ -14,10 +15,18 @@
             <td> {{product.name}} </td>
             <td> {{product.price | currency }} </td>
             <!-- le pone el simbolo $ y dos decimales -->
-            <td><span class="badge badge-danger" *ngIf="product.stock==0"> sin stock </span>
+            <td>
+                <span class="badge badge-danger" *ngIf="product.stock==0"> sin stock </span>
                 <span class="badge badge-success" *ngIf="product.stock!=0"> disponible </span></td>
-            <td> <img [src]="product.image" [alt]="product.name" class="img-thumbnail"
-                    style="width: 300px; height: 300px"></td>
+            <td> 
+                <img [src]="product.image" [alt]="product.name" class="img-thumbnail"
+                width="200" height="200">
+            </td>
+            <td>
+                <button class="btn btn-outline-primary btn-sm" (click)="downQuantity(product)">-</button>
+                <input type="text" class="form-control" [(ngModel)]="product.quantity" (keypress)="onChangeQuantity($event)">
+                <button class="btn btn-outline-primary btn-sm" (click)="upQuantity(product)">+</button>
+            </td>
         </tr>
     </tbody>
 </table>
