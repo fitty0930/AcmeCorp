@@ -23,9 +23,12 @@
                 width="200" height="200">
             </td>
             <td>
-                <button class="btn btn-outline-primary btn-sm" (click)="downQuantity(product)">-</button>
+                <div class="input-group">
+                    <button class="btn btn-outline-primary btn-sm" (click)="downQuantity(product)">-</button>
                 <input type="text" class="form-control" [(ngModel)]="product.quantity" (keypress)="onChangeQuantity($event)">
                 <button class="btn btn-outline-primary btn-sm" (click)="upQuantity(product)">+</button>
+                </div>
+                
             </td>
         </tr>
     </tbody>

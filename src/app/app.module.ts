@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { AcmeProductsComponent } from './acme-products/acme-products.component';
 import { MailOrderComponent } from './mail-order/mail-order.component';
 import { FormsModule } from '@angular/forms';
+import { AcmeAboutComponent } from './acme-about/acme-about.component';
+import { AcmeStoreComponent } from './acme-store/acme-store.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AcmeProductsComponent,
-    MailOrderComponent
+    MailOrderComponent,
+    AcmeAboutComponent,
+    AcmeStoreComponent
   ],
   imports: [
     BrowserModule,
