@@ -18,6 +18,9 @@ export class InputIntegerComponent implements OnInit {
   // hay que hacer 1 input por cada cosa que recibo
 
   @Output()
+  quantityChange: EventEmitter<number> = new EventEmitter<number>()
+
+  @Output()
   breakPoint: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class InputIntegerComponent implements OnInit {
   upQuantity(): void {
     if (this.max > this.quantity) {
       this.quantity++;
+      this.quantityChange.emit(this.quantity);
     } else {
       this.breakPoint.emit("ya no hay mas disponible");
     }
@@ -33,7 +37,8 @@ export class InputIntegerComponent implements OnInit {
 
   downQuantity(): void {
     if (this.quantity > 0) {
-      this.quantity--
+      this.quantity--;
+      this.quantityChange.emit(this.quantity);
     } else {
       this.breakPoint.emit("no trabajamos con cantidades menores a 0");
     }

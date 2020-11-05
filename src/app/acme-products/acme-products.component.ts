@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MailOrderService } from '../mail-order.service';
 import { Acme } from './Acme';
 
 @Component({
@@ -33,12 +34,21 @@ export class AcmeProductsComponent implements OnInit {
   }
   ]
 
-  constructor() { }
+
+  constructor(private mailorder: MailOrderService) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  breakPoint(message: string){
+  addToMailOrder(product): void {
+    this.mailorder.addToMailOrder(product);
+    product.stock -= product.quantity;
+    product.quantity = 0;
+  }
+
+  breakPoint(message: string) {
     alert(message);
   }
 }

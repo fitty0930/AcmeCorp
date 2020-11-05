@@ -1,1 +1,9 @@
-<p>mail-order works!</p>
+<div class="container-fluid">
+    <h4> Ordenes por correo </h4>
+    <img class="img-fluid img-thumbnail" src="assets/img/mailorder.png" alt="">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let order of (orderList$ | async)">
+            {{order.quantity}} {{order.name}}
+        </li>
+    </ul>
+</div>
