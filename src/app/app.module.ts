@@ -5,16 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AcmeProductsComponent } from './acme-products/acme-products.component';
 import { MailOrderComponent } from './mail-order/mail-order.component';
+import { FormsModule } from '@angular/forms';
+import { AcmeAboutComponent } from './acme-about/acme-about.component';
+import { AcmeStoreComponent } from './acme-store/acme-store.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AcmeProductsComponent,
-    MailOrderComponent
+    MailOrderComponent,
+    AcmeAboutComponent,
+    AcmeStoreComponent,
+    InputIntegerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

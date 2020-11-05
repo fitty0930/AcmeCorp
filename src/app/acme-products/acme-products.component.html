@@ -1,11 +1,13 @@
 <h1> Lista de productos disponibles </h1>
-<table class="table">
+<table class="table table-bordered">
     <thead>
         <tr>
             <th> Nombre </th>
             <th> Precio </th>
             <th> Stock </th>
             <th> Imagen descriptiva </th>
+            <th> Cantidad a comprar </th>
+            <th> Ordenes </th>
         </tr>
     </thead>
     <tbody>
@@ -14,10 +16,23 @@
             <td> {{product.name}} </td>
             <td> {{product.price | currency }} </td>
             <!-- le pone el simbolo $ y dos decimales -->
-            <td><span class="badge badge-danger" *ngIf="product.stock==0"> sin stock </span>
+            <td>
+                <span class="badge badge-danger" *ngIf="product.stock==0"> sin stock </span>
                 <span class="badge badge-success" *ngIf="product.stock!=0"> disponible </span></td>
-            <td> <img [src]="product.image" [alt]="product.name" class="img-thumbnail"
-                    style="width: 300px; height: 300px"></td>
+            <td>
+                <img [src]="product.image" [alt]="product.name" class="img-thumbnail" width="200" height="200">
+            </td>
+            <td>
+                <app-input-integer [(quantity)]="product.quantity" [max]="product.stock"
+                    (breakPoint)="breakPoint($event)"></app-input-integer>
+                <!-- product="product" hace que el product del padre pase tambien como variable al hijo  -->
+            </td>
+            <td>
+                <button *ngIf="product.quantity>0" class="btn btn-primary" (click)="addToMailOrder(product)"> 
+                    <small> Agregar</small> 
+                </button>
+            </td>
+
         </tr>
     </tbody>
 </table>
