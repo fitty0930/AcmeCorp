@@ -8,6 +8,7 @@ import { MailOrderComponent } from './mail-order/mail-order.component';
 import { FormsModule } from '@angular/forms';
 import { AcmeAboutComponent } from './acme-about/acme-about.component';
 import { AcmeStoreComponent } from './acme-store/acme-store.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AcmeStoreComponent } from './acme-store/acme-store.component';
     AcmeProductsComponent,
     MailOrderComponent,
     AcmeAboutComponent,
-    AcmeStoreComponent
+    AcmeStoreComponent,
+    InputIntegerComponent
   ],
   imports: [
     BrowserModule,
