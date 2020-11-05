@@ -1,38 +1,30 @@
 <h1> Lista de productos disponibles </h1>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th> Nombre </th>
-            <th> Precio </th>
-            <th> Stock </th>
-            <th> Imagen descriptiva </th>
-            <th> Cantidad a comprar </th>
-            <th> Ordenes </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products" [ngClass]="{'clearance': product.clearance}">
-            <!-- ngFor hace un foreach y ngClass agrega la clase clearance si el valor de verdad de product.clearance es true -->
-            <td> {{product.name}} </td>
-            <td> {{product.price | currency }} </td>
-            <!-- le pone el simbolo $ y dos decimales -->
-            <td>
-                <span class="badge badge-danger" *ngIf="product.stock==0"> sin stock </span>
-                <span class="badge badge-success" *ngIf="product.stock!=0"> disponible </span></td>
-            <td>
-                <img [src]="product.image" [alt]="product.name" class="img-thumbnail" width="200" height="200">
-            </td>
-            <td>
-                <app-input-integer [(quantity)]="product.quantity" [max]="product.stock"
-                    (breakPoint)="breakPoint($event)"></app-input-integer>
-                <!-- product="product" hace que el product del padre pase tambien como variable al hijo  -->
-            </td>
-            <td>
-                <button *ngIf="product.quantity>0" class="btn btn-primary" (click)="addToMailOrder(product)"> 
-                    <small> Agregar</small> 
-                </button>
-            </td>
 
-        </tr>
-    </tbody>
-</table>
+<div class="row row-cols-1 row-cols-md-3">
+
+    <div class="col mb-4" *ngFor="let product of products" [ngClass]="{'clearance': product.clearance}">
+        <div class="card">
+            <img [src]="product.image" [alt]="product.name" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">
+                    {{product.price | currency }}
+                    <span class="badge badge-danger" *ngIf="product.stock==0"> sin stock </span>
+                    <span class="badge badge-success" *ngIf="product.stock!=0"> disponible </span>
+
+                </p>
+                <p class="card-text">
+                    <span class="badge badge-warning" *ngIf="product.clearance"> OFERTA! apurate que solo quedan
+                        {{product.stock}} </span>
+                </p>
+                <p class="card-text">
+                    <app-input-integer *ngIf="product.stock" [(quantity)]="product.quantity" [max]="product.stock"
+                        (breakPoint)="breakPoint($event)"></app-input-integer>
+                    <button *ngIf="product.quantity>0" class="btn btn-primary" (click)="addToMailOrder(product)">
+                        <small> Agregar</small>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
