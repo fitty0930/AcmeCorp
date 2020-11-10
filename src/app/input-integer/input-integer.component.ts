@@ -45,10 +45,11 @@ export class InputIntegerComponent implements OnInit {
   }
 
   // funcion que impide que ingrese un caracter
+  // ya no es necesaria
   onChangeQuantity(event): boolean {
     let charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      this.breakPoint.emit("Eres despreciable")
+      this.breakPoint.emit("Ingrese numeros")
       return false;
     }
     return true;
