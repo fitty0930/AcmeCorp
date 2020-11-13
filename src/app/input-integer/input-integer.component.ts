@@ -44,6 +44,24 @@ export class InputIntegerComponent implements OnInit {
     }
   }
 
+  downQuantityTen(): void {
+    if (this.quantity-9 > 0) {
+      this.quantity=(this.quantity-10);
+      this.quantityChange.emit(this.quantity);
+    } else {
+      this.breakPoint.emit("no trabajamos con cantidades menores a 0");
+    }
+  }
+
+  upQuantityTen(): void {
+    if (this.max > this.quantity+9) {
+      this.quantity=this.quantity+10;
+      this.quantityChange.emit(this.quantity);
+    } else {
+      this.breakPoint.emit("ya no hay mas disponible");
+    }
+  }
+
   // funcion que impide que ingrese un caracter
   // ya no es necesaria
   onChangeQuantity(event): boolean {
