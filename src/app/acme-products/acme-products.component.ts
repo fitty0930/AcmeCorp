@@ -12,7 +12,7 @@ export class AcmeProductsComponent implements OnInit {
   products: Acme[] = [{
     name: "Auténtico boomerang con garantía de retornar",
     price: 1500,
-    stock: 10,
+    stock: 20,
     image: 'assets/img/boomerang.jpg',
     clearance: false,
     quantity: 0,
@@ -27,7 +27,7 @@ export class AcmeProductsComponent implements OnInit {
   {
     name: "Pildoras de terremoto",
     price: 10000,
-    stock: 3,
+    stock: 50,
     image: 'assets/img/earthquakepills.jpg',
     clearance: true,
     quantity: 0,
